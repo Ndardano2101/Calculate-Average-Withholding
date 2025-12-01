@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class WeeklyTaxCalculator {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get income
+        System.out.print("Enter weekly income: ");
+        double income = input.nextDouble();
+
+        double taxRate;
+
+        // Determine tax rate
+        if (income < 500) {
+            taxRate = 0.10;
+        } else if (income < 1500) {
+            taxRate = 0.15;
+        } else if (income < 2500) {
+            taxRate = 0.20;
+        } else {
+            taxRate = 0.30;
+        }
+
+        // Calculate tax
+        double taxWithheld = income * taxRate;
+
+        // Display results
+        System.out.println("Weekly Income: $" + income);
+        System.out.println("Tax Rate: " + (taxRate * 100) + "%");
+        System.out.println("Tax Withheld: $" + taxWithheld);
+
+        input.close();
+    }
+}
