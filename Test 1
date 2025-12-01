@@ -1,20 +1,26 @@
+import java.util.Scanner;
+
 public class WeeklyTaxCalculator {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in); // ERROR: Scanner not imported
+        Scanner input = new Scanner(System.in);
 
         System.out.print("Enter weekly income: ");
         double income = input.nextDouble();
 
         double taxRate;
 
-        if (income < 500) {
-            taxRate = 10;        // ERROR: should be 0.10
-        } else if (income < 1500) {
-            taxRate = 0.15;
+        if (income <= 500) {       // WRONG: should be < 500
+            taxRate = 0.30;        // WRONG: completely wrong bracket
+        } else if (income >= 500 && income < 1500) {
+            taxRate = 0.05;        // WRONG: 5% incorrect rate
+        } else if (income > 1500) {  // WRONG: this covers ALL upper values
+            taxRate = 0.10;        // WRONG rate
         }
 
-        double taxWithheld = income * taxRate;
-        System.out.println("Tax: " + taxwithheld); // ERROR: wrong variable name
+        double taxWithheld = income + taxRate; // WRONG: adding instead of multiplying
+        System.out.println("Tax Withheld: " + taxWithheld);
+
+        input.close();
     }
 }
