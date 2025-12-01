@@ -2,25 +2,20 @@ import java.util.Scanner;
 
 public class WeeklyTaxCalculator {
 
+    Scanner input = new Scanner(System.in);   // ERROR: scanner outside main
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
 
         System.out.print("Enter weekly income: ");
-        double income = input.nextDouble();
+        double income = input.nextDouble();   // ERROR: input not visible inside static method
 
-        double taxRate;
+        if (income < 2500)
+            double taxRate = 0.20;            // ERROR: cannot declare inside if without braces
+        else
+            taxRate = .30;                    // ERROR: taxRate not declared
 
-        if (income <= 500) {       // WRONG: should be < 500
-            taxRate = 0.30;        // WRONG: completely wrong bracket
-        } else if (income >= 500 && income < 1500) {
-            taxRate = 0.05;        // WRONG: 5% incorrect rate
-        } else if (income > 1500) {  // WRONG: this covers ALL upper values
-            taxRate = 0.10;        // WRONG rate
-        }
-
-        double taxWithheld = income + taxRate; // WRONG: adding instead of multiplying
-        System.out.println("Tax Withheld: " + taxWithheld);
-
-        input.close();
+        taxWithheld = income * taxRate;       // ERROR: both variables undeclared
+   
+        System.out.println(taxWithheld); 
     }
 }
