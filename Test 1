@@ -1,0 +1,20 @@
+public class WeeklyTaxCalculator {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in); // ERROR: Scanner not imported
+
+        System.out.print("Enter weekly income: ");
+        double income = input.nextDouble();
+
+        double taxRate;
+
+        if (income < 500) {
+            taxRate = 10;        // ERROR: should be 0.10
+        } else if (income < 1500) {
+            taxRate = 0.15;
+        }
+
+        double taxWithheld = income * taxRate;
+        System.out.println("Tax: " + taxwithheld); // ERROR: wrong variable name
+    }
+}
